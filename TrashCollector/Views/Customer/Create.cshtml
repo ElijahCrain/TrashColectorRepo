@@ -1,0 +1,122 @@
+﻿@model TrashCollector.Models.Customer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PickUpMonth" class="control-label"></label>
+                <input asp-for="PickUpMonth" class="form-control" />
+                <span asp-validation-for="PickUpMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PickUpDay" class="control-label"></label>
+                <input asp-for="PickUpDay" class="form-control" />
+                <span asp-validation-for="PickUpDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PickUpYear" class="control-label"></label>
+                <input asp-for="PickUpYear" class="form-control" />
+                <span asp-validation-for="PickUpYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExtraPickUpMonth" class="control-label"></label>
+                <input asp-for="ExtraPickUpMonth" class="form-control" />
+                <span asp-validation-for="ExtraPickUpMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExtraPickUpDay" class="control-label"></label>
+                <input asp-for="ExtraPickUpDay" class="form-control" />
+                <span asp-validation-for="ExtraPickUpDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExtraPickUpYear" class="control-label"></label>
+                <input asp-for="ExtraPickUpYear" class="form-control" />
+                <span asp-validation-for="ExtraPickUpYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartOfSuspensionMonth" class="control-label"></label>
+                <input asp-for="StartOfSuspensionMonth" class="form-control" />
+                <span asp-validation-for="StartOfSuspensionMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartOfSuspensionDay" class="control-label"></label>
+                <input asp-for="StartOfSuspensionDay" class="form-control" />
+                <span asp-validation-for="StartOfSuspensionDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartOfSuspensionYear" class="control-label"></label>
+                <input asp-for="StartOfSuspensionYear" class="form-control" />
+                <span asp-validation-for="StartOfSuspensionYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndOfSuspensionMonth" class="control-label"></label>
+                <input asp-for="EndOfSuspensionMonth" class="form-control" />
+                <span asp-validation-for="EndOfSuspensionMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndOfSuspensionDay" class="control-label"></label>
+                <input asp-for="EndOfSuspensionDay" class="form-control" />
+                <span asp-validation-for="EndOfSuspensionDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndOfSuspensionYear" class="control-label"></label>
+                <input asp-for="EndOfSuspensionYear" class="form-control" />
+                <span asp-validation-for="EndOfSuspensionYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetName" class="control-label"></label>
+                <input asp-for="StreetName" class="form-control" />
+                <span asp-validation-for="StreetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountBallance" class="control-label"></label>
+                <input asp-for="AccountBallance" class="form-control" />
+                <span asp-validation-for="AccountBallance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdentityUserId" class="control-label"></label>
+                <select asp-for="IdentityUserId" class ="form-control" asp-items="ViewBag.IdentityUserId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
