@@ -35,6 +35,8 @@ namespace TrashCollector
 		[ForeignKey("IdentityUser")]
 		public string IdentityUserId { get; set; }
 		public IdentityUser IdentityUser { get; set; }
+		
+		
 	}
 
 }
