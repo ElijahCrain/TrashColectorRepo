@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace TrashCollector
+namespace TrashCollector.Models
 {
 
 	public class Customer
@@ -30,6 +30,7 @@ namespace TrashCollector
 		public string StreetName { get; set; }
 		public string State { get; set; }
 		public string ZipCode { get; set; }
+		public string AccountBallance { get; set; }
 		
 
 		[ForeignKey("IdentityUser")]
