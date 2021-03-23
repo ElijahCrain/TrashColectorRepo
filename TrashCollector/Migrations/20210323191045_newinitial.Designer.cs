@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrashCollector.Data;
 
-namespace TrashCollector.Data.Migrations
+namespace TrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210322202339_added an new veiw ")]
-    partial class addedannewveiw
+    [Migration("20210323191045_newinitial")]
+    partial class newinitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace TrashCollector.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9dc88496-7062-46c6-a76d-82b8eff0750d",
-                            ConcurrencyStamp = "56340956-3c5b-4b8c-b51b-08fb9c370a9a",
+                            Id = "9d28b6c0-a800-48a5-ada6-d5de9f50bfba",
+                            ConcurrencyStamp = "5d5a1dc0-54b6-4937-bcb2-59409fbcf032",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         },
                         new
                         {
-                            Id = "0d8fc2ee-8a9c-4baa-8982-4fa038ba5059",
-                            ConcurrencyStamp = "d9a8c80e-e0ff-42f7-8c93-54cb5efa6ed8",
+                            Id = "e329f466-5f87-4b1c-b8b5-ed1e42981415",
+                            ConcurrencyStamp = "bb55f6ff-9014-434f-98b6-178dfe499ed2",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -240,8 +240,8 @@ namespace TrashCollector.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AccountBallance")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("AccountBallance")
+                        .HasColumnType("int");
 
                     b.Property<string>("EndOfSuspensionDay")
                         .HasColumnType("nvarchar(max)");
@@ -273,12 +273,6 @@ namespace TrashCollector.Data.Migrations
                     b.Property<string>("PickUpDay")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PickUpMonth")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PickUpYear")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("StartOfSuspensionDay")
                         .HasColumnType("nvarchar(max)");
 
@@ -306,7 +300,7 @@ namespace TrashCollector.Data.Migrations
 
             modelBuilder.Entity("TrashCollector.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -320,7 +314,13 @@ namespace TrashCollector.Data.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("PickupDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EmployeeId");
 
                     b.HasIndex("IdentityUserId");
 
