@@ -5,22 +5,31 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TrashCollector.Data;
+using TrashCollector.Models;
 
 namespace TrashCollector.Controllers
 {
 	[Authorize(Roles = "Employee")]
 	public class EmployeeController : Controller
 	{
+		private ApplicationDbContext _context;
+		public EmployeeController(ApplicationDbContext context)
+		{
+			_context = context;
+		}
 		// GET: EmployeeController
 		public ActionResult Index()
 		{
-			return View();
+			var Employee = _context.Employees.ToList();
+			return View(Employee);
 		}
 
 		// GET: EmployeeController/Details/5
 		public ActionResult Details(int id)
 		{
-			return View();
+			var Employee = _context.Employees.Find(id);
+			return View(id);
 		}
 
 		// GET: EmployeeController/Create
@@ -32,10 +41,13 @@ namespace TrashCollector.Controllers
 		// POST: EmployeeController/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(IFormCollection collection)
+		public ActionResult Create(Employee employee)
 		{
 			try
 			{
+				_context.Employees.Add(employee);
+				_context.SaveChanges();
+
 				return RedirectToAction(nameof(Index));
 			}
 			catch
@@ -47,16 +59,20 @@ namespace TrashCollector.Controllers
 		// GET: EmployeeController/Edit/5
 		public ActionResult Edit(int id)
 		{
+			var findid = _context.Employees.Find(id);
+			return View(findid);
 			return View();
 		}
 
 		// POST: EmployeeController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(int id, IFormCollection collection)
+		public ActionResult Edit(int id, Employee employee)
 		{
 			try
 			{
+				_context.Employees.Update(employee);
+				_context.SaveChanges();
 				return RedirectToAction(nameof(Index));
 			}
 			catch
@@ -68,16 +84,20 @@ namespace TrashCollector.Controllers
 		// GET: EmployeeController/Delete/5
 		public ActionResult Delete(int id)
 		{
-			return View();
+			var deleteid = _context.Employees.Find(id);
+			return View(deleteid);
+			
 		}
 
 		// POST: EmployeeController/Delete/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Delete(int id, IFormCollection collection)
+		public ActionResult Delete(int id, Employee employee)
 		{
 			try
 			{
+				_context.Employees.Remove(employee);
+				_context.SaveChanges();
 				return RedirectToAction(nameof(Index));
 			}
 			catch

@@ -89,6 +89,7 @@ namespace TrashCollector.Controllers
 		{
 			try
 			{
+				
 				customer.AccountBallance += 15;
 				_context.SaveChanges();
 				return RedirectToAction(nameof(Index));
