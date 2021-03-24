@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -21,8 +22,8 @@ namespace TrashCollector.Controllers
 		// GET: EmployeeController
 		public ActionResult Index()
 		{
-			var Employee = _context.Employees.ToList();
-			return View(Employee);
+			var employee = _context.Employees.ToList();
+			return View(employee);
 		}
 
 		// GET: EmployeeController/Details/5
@@ -97,6 +98,27 @@ namespace TrashCollector.Controllers
 			try
 			{
 				_context.Employees.Remove(employee);
+				_context.SaveChanges();
+				return RedirectToAction(nameof(Index));
+			}
+			catch
+			{
+				return View();
+			}
+
+		}
+		public ActionResult Charge(int id)
+		{
+			var chargeid = _context.Customers.Find(id);
+			return View(chargeid);
+		}
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Charge(int id, Customer customer)
+		{
+			try
+			{
+				customer.AccountBallance += 15;
 				_context.SaveChanges();
 				return RedirectToAction(nameof(Index));
 			}
