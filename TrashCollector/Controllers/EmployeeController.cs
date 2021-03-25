@@ -22,6 +22,7 @@ namespace TrashCollector.Controllers
 		// GET: EmployeeController
 		public ActionResult Index()
 		{
+			//see all the customers in the employee who is logged in based on zip code
 			var employee = _context.Employees.ToList();
 			return View(employee);
 		}
@@ -62,7 +63,7 @@ namespace TrashCollector.Controllers
 		{
 			var findid = _context.Employees.Find(id);
 			return View(findid);
-			return View();
+			//return View();
 		}
 
 		// POST: EmployeeController/Edit/5
@@ -107,11 +108,11 @@ namespace TrashCollector.Controllers
 			}
 
 		}
-		public ActionResult Charge(int id)
-		{
-			var chargeid = _context.Customers.Find(id);
-			return View(chargeid);
-		}
+		//public ActionResult Charge(int id)
+		//{
+		//	var chargeid = _context.Customers.Find(id);
+		//	return View(chargeid);
+		//}
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Charge(int id, Customer customer)

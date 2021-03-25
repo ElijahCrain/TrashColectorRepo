@@ -1,0 +1,131 @@
+﻿@model IEnumerable<TrashCollector.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PickUpDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExtraPickUpMonth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExtraPickUpDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExtraPickUpYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartOfSuspensionMonth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartOfSuspensionDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartOfSuspensionYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndOfSuspensionMonth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndOfSuspensionDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndOfSuspensionYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StreetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountBallance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdentityUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickUpDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExtraPickUpMonth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExtraPickUpDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExtraPickUpYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartOfSuspensionMonth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartOfSuspensionDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartOfSuspensionYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndOfSuspensionMonth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndOfSuspensionDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndOfSuspensionYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StreetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountBallance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdentityUser.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Charge" asp-route-id="@item.Id">Confirm Pickup</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
